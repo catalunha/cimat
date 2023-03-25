@@ -40,11 +40,11 @@ class CautionReceiverBloc
           QueryBuilder<ParseObject>(ParseObject(CautionEntity.className));
 
       query.whereEqualTo(
-          'receiverUserProfile',
+          CautionEntity.receiverUserProfile,
           (ParseObject(UserProfileEntity.className)
                 ..objectId = event.userModel.userProfile!.id)
               .toPointer());
-      query.whereEqualTo('givebackWasAccepted', null);
+      query.whereEqualTo(CautionEntity.givebackItemWasAccepted, null);
       List<CautionModel> temp = await _cautionRepository.list(query, null);
       List<CautionModel> tempFiltered =
           temp.where((item) => item.receiverIsPermanentItem == false).toList();

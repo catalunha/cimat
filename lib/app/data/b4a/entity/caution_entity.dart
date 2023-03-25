@@ -6,6 +6,22 @@ import 'user_profile_entity.dart';
 
 class CautionEntity {
   static const String className = 'Caution';
+  static const String id = 'id';
+  static const String deliveryUserProfile = 'deliveryUserProfile';
+  static const String deliveryDt = 'deliveryDt';
+  static const String item = 'item';
+  static const String receiverUserProfile = 'receiverUserProfile';
+  static const String receiverItemWasAccepted = 'receiverItemWasAccepted';
+  static const String receiverAnalyzedItemDt = 'receiverAnalyzedItemDt';
+  static const String receiverIsPermanentItem = 'receiverIsPermanentItem';
+  static const String receiverIsStartGiveback = 'receiverIsStartGiveback';
+  static const String receiverGivebackItemDt = 'receiverGivebackItemDt';
+  static const String receiverGivebackDescription =
+      'receiverGivebackDescription';
+  static const String givebackUserProfile = 'givebackUserProfile';
+  static const String givebackItemWasAccepted = 'givebackItemWasAccepted';
+  static const String givebackAnalyzedItemDt = 'givebackAnalyzedItemDt';
+  static const String givebackDescription = 'givebackDescription';
 
   CautionModel fromParse(ParseObject parseObject) {
     CautionModel profileModel = CautionModel(

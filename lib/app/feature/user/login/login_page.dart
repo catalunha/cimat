@@ -42,8 +42,6 @@ class _LoginViewState extends State<LoginView> {
   @override
   void initState() {
     super.initState();
-    _emailTEC.text = 'catalunha.mj@gmail.com';
-    _passwordTEC.text = '123456';
   }
 
   @override

@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "cimat"
+    },
+    "cimat": {
+      "applicationId": "S7QMm0nExKkUFbsIUGLsE5UcHD2O0B7cHssWpeMj"
+    }
+  }
+}

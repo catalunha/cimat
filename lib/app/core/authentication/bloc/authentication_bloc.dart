@@ -31,11 +31,11 @@ class AuthenticationBloc
     try {
       bool logout = await _userRepository.logout();
       if (logout) {
-        return emit(const AuthenticationState.unauthenticated());
+        emit(const AuthenticationState.unauthenticated());
       }
-      return emit(const AuthenticationState.unauthenticated());
+      emit(const AuthenticationState.unauthenticated());
     } catch (_) {
-      return emit(const AuthenticationState.unauthenticated());
+      emit(const AuthenticationState.unauthenticated());
     }
   }
 
@@ -52,13 +52,32 @@ class AuthenticationBloc
     try {
       bool initParse = await initBack4app.init();
       if (initParse) {
+        print('+++ AuthenticationEventInitial.1');
         final user = await _userRepository.hasUserLogged();
+        print('+++ AuthenticationEventInitial.2');
         if (user != null) {
-          emit(AuthenticationState.authenticated(user));
+          print('+++ AuthenticationEventInitial.3');
+          if (user.userProfile?.isActive == true) {
+            print('+++ AuthenticationEventInitial.4');
+            emit(AuthenticationState.authenticated(user));
+          } else {
+            print('+++ AuthenticationEventInitial.5');
+            emit(state.copyWith(
+                status: AuthenticationStatus.unauthenticated,
+                error:
+                    'Sua conta ainda esta em análise. Tente login mais tarde'));
+            add(AuthenticationEventLogoutRequested());
+          }
+          print('+++ AuthenticationEventInitial.6');
+          // emit(AuthenticationState.authenticated(user));
         } else {
-          await Future.delayed(const Duration(seconds: 2));
-          emit(const AuthenticationState.unauthenticated());
+          print('+++ AuthenticationEventInitial.7');
+          // await Future.delayed(const Duration(seconds: 2));
+          emit(state.copyWith(
+              status: AuthenticationStatus.unauthenticated,
+              error: 'Faça login novamente'));
         }
+        print('+++ AuthenticationEventInitial.8');
       }
     } on B4aException catch (e) {
       print('+++ _onAuthenticationEventInitial');

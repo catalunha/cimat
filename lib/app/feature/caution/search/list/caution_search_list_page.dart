@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/models/caution_model.dart';
 import '../bloc/caution_search_bloc.dart';
 import '../bloc/caution_search_event.dart';
 import '../bloc/caution_search_state.dart';
@@ -28,7 +29,10 @@ class CautionSearchListView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              // Get.to(() => CautionPrintPage());
+              List<CautionModel> cautionList =
+                  context.read<CautionSearchBloc>().state.cautionModelList;
+              Navigator.of(context)
+                  .pushNamed('/caution/print', arguments: cautionList);
             },
             icon: const Icon(Icons.print),
           )

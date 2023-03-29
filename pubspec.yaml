@@ -19,6 +19,9 @@ dependencies:
   # image
   image_picker: ^0.8.6+2
   image_picker_for_web: ^2.1.10  
+  # pdf
+  pdf: ^3.9.0
+  printing: ^5.10.1  
   # outros
   validatorless: ^1.2.3
   intl: ^0.17.0

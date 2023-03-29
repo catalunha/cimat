@@ -18,6 +18,7 @@ class HomePopMenu extends StatelessWidget {
             child: TextButton.icon(
               label: const Text('Editar perfil'),
               onPressed: () {
+                Navigator.pop(context);
                 UserModel user = context.read<AuthenticationBloc>().state.user!;
                 Navigator.of(context)
                     .pushNamed('/userProfile/edit', arguments: user);

@@ -5,8 +5,8 @@ import 'b4a_exception.dart';
 class InitBack4app {
   Future<bool> init() async {
     try {
-      const keyApplicationId = 'S7QMm0nExKkUFbsIUGLsE5UcHD2O0B7cHssWpeMj';
-      const keyClientKey = 'blOxPMjEgsNkfBBvZwufjmizCdcDLkDnMfBD4DIt';
+      const keyApplicationId = '';
+      const keyClientKey = '';
       const keyParseServerUrl = 'https://parseapi.back4app.com';
       await Parse().initialize(
         keyApplicationId,

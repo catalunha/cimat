@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 import 'b4a_exception.dart';
@@ -5,13 +7,17 @@ import 'b4a_exception.dart';
 class InitBack4app {
   Future<bool> init() async {
     try {
-      const keyApplicationId = '';
-      const keyClientKey = '';
+      log('+++InitBack4app');
+      const keyApplicationIdDartDefineFile =
+          String.fromEnvironment('keyApplicationId');
+      const keyClientKeyDartDefineFile = String.fromEnvironment('keyClientKey');
       const keyParseServerUrl = 'https://parseapi.back4app.com';
+      log('---InitBack4app: $keyApplicationIdDartDefineFile');
+      log('---InitBack4app');
       await Parse().initialize(
-        keyApplicationId,
+        keyApplicationIdDartDefineFile,
         keyParseServerUrl,
-        clientKey: keyClientKey,
+        clientKey: keyClientKeyDartDefineFile,
         autoSendSessionId: true,
         debug: true,
       );
